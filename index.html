@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head >
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Envio de E-mail</title>
+    <title>Cadastro de Aluno</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" rel="stylesheet">
+    
     <style>
         * {
+            box-sizing: border-box;
+        }
+
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-        }
-        body {
-            background-color: #FFC874;
+            background-image: url('Aya-cooking (1).jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -21,11 +26,12 @@
             min-height: 100vh;
             padding: 20px;
         }
+
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #101010;
+            background: rgba(16, 16, 16, 0.9);
             color: white;
             text-align: center;
             padding: 15px 0;
@@ -33,37 +39,43 @@
             font-weight: bold;
             z-index: 1000;
         }
-        .container {
-            border: 2px solid #3E342B;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px black;
-            text-align: center;
+
+        form {
             width: 100%;
             max-width: 500px;
-        }
-        h3 {
+            padding: 30px;
+            border: 2px solid #3E342B;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 4px 10px black;
+            backdrop-filter: blur(8px);
             margin-bottom: 20px;
-            color: #3E342B;
         }
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .form-group label {
+
+        label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
         }
-        .form-group input {
+
+        input, select, textarea {
             width: 100%;
             padding: 10px;
             border: 2px solid #3E342B;
             border-radius: 5px;
             font-size: 16px;
-            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.4) !important;
+            color: black !important;
+            -webkit-text-fill-color: black !important;
+            caret-color: black;
+            margin-bottom: 15px;
         }
+
+        input::placeholder, textarea::placeholder {
+            color: #333;
+            opacity: 1;
+        }
+
         button {
             background: #3E342B;
             color: white;
@@ -74,15 +86,17 @@
             font-size: 18px;
             cursor: pointer;
             transition: transform 0.3s, background 0.3s;
+            margin-top: 10px;
         }
-        button:hover {
-            background: #101010;
-            transform: scale(1.05);
+
+        .consultar-btn {
+            background-color: #0e75d9;
         }
+
         footer {
             position: fixed;
             bottom: 0;
-            background: #101010;
+            background: rgba(16, 16, 16, 0.9);
             text-align: center;
             font-size: 14px;
             color: white;
@@ -93,41 +107,47 @@
     </style>
 </head>
 <body>
-    <header>Envio de E-mail</header>
-    <br>
-    <div class="container">
-        <form action="formail.php" method="post" autocomplete="off">
-            <div class="form-group">
-                <label for="nome">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone:</label>
-                <input type="text" id="telefone" name="telefone" required>
-            </div>
-            <div class="form-group">
-                <label for="RG">RG:</label>
-                <input type="number" id="RG" name="RG" required>
-            </div>
-            <div class="form-group">
-                <label for="CPF">CPF:</label>
-                <input type="number" id="CPF" name="CPF" required>
-            </div>
-            <div class="form-group">
-                <label for="data_nascimento">Data de Nascimento:</label>
-                <input type="date" id="data_nascimento" name="data_nascimento" required>
-            </div>
-            <div class="form-group">
-                <label for="FOTO">Insira sua foto:</label>
-                <input type="file" id="FOTO" name="FOTO">
-            </div>
-            <button type="submit">Enviar Mensagem</button>
-        </form>
-    </div>
+    <header>Cadastro de Aluno</header>
+    <br><br><br>
+
+    <!-- Formulário de Cadastro -->
+    <form action="cadastro.php" method="post" enctype="multipart/form-data" autocomplete="off">
+        <div>
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+        </div>
+        <div>
+            <label for="RG">RG:</label>
+            <input type="text" id="RG" name="RG" required>
+        </div>
+        <div>
+            <label for="CPF">CPF:</label>
+            <input type="text" id="CPF" name="CPF" required>
+        </div>
+        <div>
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" required>
+        </div>
+        <div>
+            <label for="FOTO">Insira sua foto:</label>
+            <input type="file" id="FOTO" name="FOTO">
+        </div>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <!-- Botão para visualizar a tabela completa -->
+    <form action="tabela.php" method="get">
+        <button class="consultar-btn" type="submit">Ver Tabela de Alunos</button>
+    </form>
+
     <footer>© 2025 Lucas Rodrigues Amorim. Todos os direitos reservados.</footer>
 </body>
 </html>
